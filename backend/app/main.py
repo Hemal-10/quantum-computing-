@@ -20,10 +20,12 @@ def create_app() -> FastAPI:
     # ---------------------------------------------------------------------------
     # CORS – allow the Vite dev server (and any extra origins from settings)
     # ---------------------------------------------------------------------------
+    cors_origins = settings.CORS_ORIGINS
+    allow_all = "*" in cors_origins or len(cors_origins) == 0
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.CORS_ORIGINS,
-        allow_credentials=True,
+        allow_origins=["*"] if allow_all else cors_origins,
+        allow_credentials=False if allow_all else True,
         allow_methods=["*"],
         allow_headers=["*"],
     )

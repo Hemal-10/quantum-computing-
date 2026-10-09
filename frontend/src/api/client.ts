@@ -66,7 +66,11 @@ export interface GroverResponse {
   simulator_note: string;
 }
 
-const BASE_URL = '/api';
+const envUrl = (import.meta.env.VITE_API_URL as string | undefined)?.trim();
+const BASE_URL = envUrl
+  ? (envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/+$/, '')}/api`)
+  : '/api';
+
 
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE_URL}${path}`, {
@@ -77,17 +81,25 @@ async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
   if (!res.ok) {
     let errorDetail = `HTTP ${res.status}`;
     try {
-      const data = await res.json();
-      if (typeof data.detail === 'string') {
-        errorDetail = data.detail;
-      } else if (Array.isArray(data.detail)) {
-        errorDetail = data.detail.map((e: { msg?: string }) => e.msg || JSON.stringify(e)).join(', ');
-      } else {
-        errorDetail = JSON.stringify(data.detail || data);
+      // Read the body as text ONCE to avoid "body stream already read" error
+      const text = await res.text();
+      if (text) {
+        try {
+          const data = JSON.parse(text);
+          if (typeof data.detail === 'string') {
+            errorDetail = data.detail;
+          } else if (Array.isArray(data.detail)) {
+            errorDetail = data.detail.map((e: { msg?: string }) => e.msg || JSON.stringify(e)).join(', ');
+          } else {
+            errorDetail = JSON.stringify(data.detail || data);
+          }
+        } catch {
+          // Not JSON — use raw text
+          errorDetail = text;
+        }
       }
     } catch {
-      const text = await res.text();
-      if (text) errorDetail = text;
+      // Network-level failure — keep default HTTP status message
     }
     throw new Error(errorDetail);
   }
