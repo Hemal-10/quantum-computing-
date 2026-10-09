@@ -1,0 +1,109 @@
+/* HealthCard.css – scoped styles for the HealthCard component */
+
+.health-card {
+  max-width: 560px;
+  width: 100%;
+  padding: 2rem;
+}
+
+.health-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.health-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(34,211,238,0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+}
+
+.health-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.health-card__subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.health-card__divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 1.25rem 0;
+}
+
+.health-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.health-card__label {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.health-card__value {
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.health-card__message {
+  margin-top: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: rgba(34, 211, 238, 0.05);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  border-radius: 10px;
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.health-card__error {
+  margin-top: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: rgba(244, 63, 94, 0.07);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: 10px;
+  font-size: 0.825rem;
+  color: var(--color-rose);
+  font-family: var(--font-mono);
+}
+
+.health-card__retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  background: rgba(124, 58, 237, 0.12);
+  color: #a78bfa;
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-sm) var(--ease-out),
+              border-color var(--duration-sm) var(--ease-out),
+              transform var(--duration-sm) var(--ease-out);
+}
+.health-card__retry-btn:hover {
+  background: rgba(124, 58, 237, 0.25);
+  border-color: rgba(124, 58, 237, 0.8);
+  transform: translateY(-1px);
+}
+.health-card__retry-btn:active { transform: translateY(0); }

@@ -1,0 +1,25 @@
+{
+  "dataset_id": "synthetic_64bp_001",
+  "reference_id": "synthetic_64bp_001_ref",
+  "sample_id": "synthetic_64bp_001_sample",
+  "sequence_length": 64,
+  "total_mutations": 3,
+  "mutation_percentage": 4.6875,
+  "ground_truth_mutations": [
+    {
+      "position": 5,
+      "reference_base": "A",
+      "sample_base": "G"
+    },
+    {
+      "position": 8,
+      "reference_base": "G",
+      "sample_base": "C"
+    },
+    {
+      "position": 30,
+      "reference_base": "A",
+      "sample_base": "G"
+    }
+  ]
+}

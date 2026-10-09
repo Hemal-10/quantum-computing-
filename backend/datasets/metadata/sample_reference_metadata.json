@@ -1,0 +1,10 @@
+{
+  "dataset_id": "sample_reference_hbb",
+  "source": "ncbi",
+  "accession": "NM_000518.5",
+  "genome_assembly": "GRCh38.p14",
+  "sequence_length": 494,
+  "generation_parameters": null,
+  "created_at": "2026-10-09T04:25:00+00:00",
+  "notes": "Authentic NCBI RefSeq NM_000518.5 human hemoglobin subunit beta (HBB) coding sequence fragment for offline reference analysis."
+}

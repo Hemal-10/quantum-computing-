@@ -1,0 +1,9 @@
+##fileformat=VCFv4.2
+##source=ClinVar
+##reference=GRCh38
+##INFO=<ID=ALLELEID,Number=1,Type=Integer,Description="ClinVar Allele ID">
+##INFO=<ID=CLNSIG,Number=.,Type=String,Description="Clinical significance for this single variant">
+##INFO=<ID=GENEINFO,Number=1,Type=String,Description="Gene symbol:gene id">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+11	5227002	rs334	T	A	.	PASS	ALLELEID=15048;CLNSIG=Pathogenic;GENEINFO=HBB:3043
+11	5227003	rs33930165	A	G	.	PASS	ALLELEID=40502;CLNSIG=Pathogenic;GENEINFO=HBB:3043

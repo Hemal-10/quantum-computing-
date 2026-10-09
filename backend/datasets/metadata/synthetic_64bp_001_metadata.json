@@ -1,0 +1,15 @@
+{
+  "dataset_id": "synthetic_64bp_001",
+  "source": "synthetic",
+  "accession": null,
+  "genome_assembly": null,
+  "sequence_length": 64,
+  "generation_parameters": {
+    "seed": 42,
+    "target_gc_content": 0.5,
+    "mutation_count": 3,
+    "length": 64
+  },
+  "created_at": "2026-10-09T04:22:39.179557+00:00",
+  "notes": "Synthetically generated benchmark dataset. Controlled point mutations introduced at 3 positions for reproducibility testing. "
+}

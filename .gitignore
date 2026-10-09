@@ -1,0 +1,51 @@
+# ── Python ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Pytest / coverage
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Mypy
+.mypy_cache/
+
+# ── Node / Frontend ──────────────────────────────────
+node_modules/
+dist/
+*.local
+
+# Vite build artefacts
+frontend/dist/
+frontend/.vite/
+
+# ── Environment files ────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── IDE / OS ─────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ── Qiskit cache ────────────────────────────────────
+*.qasm
