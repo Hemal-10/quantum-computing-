@@ -31,6 +31,26 @@ def create_app() -> FastAPI:
     )
 
     # ---------------------------------------------------------------------------
+    # Root & Health Check Endpoints (for Render health probes)
+    # ---------------------------------------------------------------------------
+    @app.api_route("/", methods=["GET", "HEAD"], tags=["root"])
+    async def root():
+        return {
+            "status": "ok",
+            "message": "Quantum DNA Sequence Analyzer API is running.",
+            "version": settings.APP_VERSION,
+            "docs": "/docs",
+        }
+
+    @app.api_route("/health", methods=["GET", "HEAD"], tags=["root"])
+    async def root_health():
+        return {
+            "status": "ok",
+            "message": "Quantum DNA Sequence Analyzer API is running.",
+            "version": settings.APP_VERSION,
+        }
+
+    # ---------------------------------------------------------------------------
     # Routers
     # ---------------------------------------------------------------------------
     app.include_router(health_router)
