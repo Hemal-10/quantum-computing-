@@ -16,19 +16,15 @@ services:
         value: "false"
 
   # 2. React Vite Frontend (Static Site)
-  - type: web
+  - type: static
     name: quantum-dna-frontend
-    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     routes:
       - type: rewrite
+        source: /api/*
+        destination: https://quantum-dna-backend.onrender.com/api/*
+      - type: rewrite
         source: /*
         destination: /index.html
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: quantum-dna-backend
-          property: host

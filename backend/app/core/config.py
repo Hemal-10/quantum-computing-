@@ -1,6 +1,5 @@
 import json
 from typing import Union
-from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -14,15 +13,17 @@ class Settings(BaseSettings):
     APP_VERSION: str = "0.1.0"
     DEBUG: bool = False
 
-    # CORS – comma-separated list of allowed origins or JSON list
-    CORS_ORIGINS: list[str] = [
+    # CORS – can be string "*" or comma-separated origins or list of strings
+    CORS_ORIGINS: Union[str, list[str]] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
     ]
 
-    @field_validator("CORS_ORIGINS", mode="before")
-    @classmethod
-    def assemble_cors_origins(cls, v: Union[str, list[str]]) -> list[str]:
+    @property
+    def cors_origin_list(self) -> list[str]:
+        v = self.CORS_ORIGINS
+        if isinstance(v, list):
+            return v
         if isinstance(v, str):
             stripped = v.strip()
             if not stripped:
@@ -35,7 +36,7 @@ class Settings(BaseSettings):
                 except Exception:
                     pass
             return [origin.strip() for origin in stripped.split(",") if origin.strip()]
-        return v
+        return []
 
 
 settings = Settings()
